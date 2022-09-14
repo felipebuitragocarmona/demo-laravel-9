@@ -37,3 +37,12 @@ Route::controller(UsersController::class)->group(function () {
     Route::put('users/{id}', 'update'); 
     Route::delete('users/{id}', 'destroy'); 
 });
+
+use App\Http\Controllers\RolesController;
+Route::controller(RolesController::class)->group(function () {
+    Route::get('roles','index');
+    Route::get('roles/{id}', 'show'); 
+    Route::post('roles', 'store'); 
+    Route::put('roles/{id}', 'update'); 
+    Route::delete('roles/{id}', 'destroy'); 
+});

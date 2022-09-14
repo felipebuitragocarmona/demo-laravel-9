@@ -16,6 +16,7 @@ class UsersController extends Controller
             return response()->json(['message'=>'Not found'],404);
         }else{
             $the_User->profile;
+            $the_User->role;
             return response()->json($the_User,200);
         }
         return $the_User;
