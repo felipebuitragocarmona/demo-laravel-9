@@ -16,7 +16,7 @@ class Profilesv02 extends Migration
         //
         Schema::table('profiles', function (Blueprint $table) {
             //Agregar la columna que contendrá el dato foráneo
-            $table->bigInteger('user_id')->unsigned();
+            $table->bigInteger('user_id')->unsigned()->unique();
             //Hacer efectivo la relación
             $table->foreign('user_id')->references('id')
                                     ->on('users')

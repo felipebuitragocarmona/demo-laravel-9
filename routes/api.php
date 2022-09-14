@@ -28,3 +28,12 @@ Route::controller(PermissionsController::class)->group(function () {
     Route::put('permissions/{id}', 'update'); //Para actualizar
     Route::delete('permissions/{id}', 'destroy'); //Para eliminar un registro
 });
+
+use App\Http\Controllers\UsersController;
+Route::controller(UsersController::class)->group(function () {
+    Route::get('users','index');
+    Route::get('users/{id}', 'show'); 
+    Route::post('users', 'store'); 
+    Route::put('users/{id}', 'update'); 
+    Route::delete('users/{id}', 'destroy'); 
+});

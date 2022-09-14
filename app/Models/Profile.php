@@ -10,6 +10,12 @@ class Profile extends Model
     use HasFactory;
     protected $fillable = [
         'phone_number',
-        'url_instagram'
+        'url_instagram',
+        'user_id'
     ];
+    //Indicar que le pertenece a un usuario
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
 }
