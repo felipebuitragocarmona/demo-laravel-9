@@ -17,7 +17,8 @@ class PermissionsController extends Controller
         if(is_null($the_permission)){
             return response()->json(['message'=>'Not found'],404);
         }else{
-            return response()->json($the_permission::find($id),200);
+            $the_permission->roles;
+            return response()->json($the_permission,200);
         }
     }
     public function store(Request $request){

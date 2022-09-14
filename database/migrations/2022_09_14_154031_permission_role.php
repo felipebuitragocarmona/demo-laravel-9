@@ -28,6 +28,7 @@ class PermissionRole extends Migration
                                     ->on('permissions')
                                     ->onDelete('cascade');
             $table->timestamps();
+            $table->unique(['role_id', 'permission_id']);
          });
     }
 

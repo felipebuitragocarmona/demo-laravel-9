@@ -17,4 +17,9 @@ class Permission extends Model
         'url',
         'method'
     ];
+    //Relación n a n
+    public function roles()
+    {
+        return $this->belongsToMany(Role::class);
+    }
 }

@@ -16,6 +16,7 @@ class RolesController extends Controller
             return response()->json(['message'=>'Not found'],404);
         }else{
             $the_Role->users;
+            $the_Role->permissions;
             return response()->json($the_Role,200);
         }
         return $the_Role;
