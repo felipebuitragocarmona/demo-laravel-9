@@ -14,12 +14,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-use App\Http\Controllers\PermissionsController;
+
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+use App\Http\Controllers\PermissionsController;
 Route::controller(PermissionsController::class)->group(function () {
     Route::get('permissions','index'); //Para obtener todos
     Route::get('permissions/{id}', 'show'); //Para consultar especifico
