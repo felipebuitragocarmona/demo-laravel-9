@@ -21,7 +21,7 @@ class UserAccess
 
         // if(!Auth::guard('api')->check()){
         if(!auth('api')->user()){
-            return response()->json(['You do not have permission to access for this page.']);            
+            return response()->json(['You do not have permission to access for this page.'],401);            
         }else{
             
             $user= auth('api')->user();

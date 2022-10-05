@@ -31,8 +31,8 @@ Route::controller(PermissionsController::class)->group(function () {
 
 use App\Http\Controllers\UsersController;
 Route::controller(UsersController::class)->group(function () {
-    Route::get('users','index')->middleware('user-access');
-    Route::get('users/{id}', 'show'); 
+    Route::get('users','index')->middleware(['user-access','permission-access']);
+    Route::get('users/{id}', 'show')->middleware(['user-access','permission-access']); 
     Route::post('users', 'store'); 
     Route::put('users/{id}', 'update'); 
     Route::delete('users/{id}', 'destroy'); 
@@ -50,8 +50,8 @@ Route::controller(SecurityController::class)->group(function () {
 
 use App\Http\Controllers\RolesController;
 Route::controller(RolesController::class)->group(function () {
-    Route::get('roles','index');
-    Route::get('roles/{id}', 'show'); 
+    Route::get('roles','index')->middleware(['user-access','permission-access']);
+    Route::get('roles/{id}', 'show')->middleware(['user-access','permission-access']); 
     Route::post('roles', 'store'); 
     Route::put('roles/{id}', 'update'); 
     Route::delete('roles/{id}', 'destroy'); 
