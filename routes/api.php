@@ -46,6 +46,7 @@ Route::controller(UsersController::class)->group(function () {
 use App\Http\Controllers\SecurityController;
 Route::controller(SecurityController::class)->group(function () {
     Route::post('login', 'login'); 
+    Route::post('logout', 'logout'); 
 });
 
 use App\Http\Controllers\RolesController;
