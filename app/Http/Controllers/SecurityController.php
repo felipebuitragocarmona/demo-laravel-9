@@ -30,6 +30,7 @@ class SecurityController extends Controller
     {
         if (auth('api')->user()) {
             error_log('entra');
+            error_log(auth('api')->user());
             $user=auth('api')->user();
             $user->token()->revoke();
             return response(['message' => 'Logout Successful'],200);

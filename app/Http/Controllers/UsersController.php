@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -28,17 +29,20 @@ class UsersController extends Controller
     }
     public function store(Request $request)
     {
-        // echo "entradno";
-        $data = $request->validate([
-            'name' => 'required',
-            'email' => 'required|email',
-            'password' => 'required',
-            'role_id'=>'required'
-        ]);
-        $data['password'] = bcrypt($request->password);
-        $user = User::create($data);
-        $token = $user->createToken('API Token')->accessToken;
-        return response([ 'user' => $user, 'token' => $token]);
+        try {
+            $data = $request->validate([
+                'name' => 'required',
+                'email' => 'required|email',
+                'password' => 'required',
+                'role_id' => 'required'
+            ]);
+            $data['password'] = bcrypt($request->password);
+            $user = User::create($data);
+            $token = $user->createToken('API Token')->accessToken;
+            return response(['user' => $user, 'token' => $token]);
+        } catch (Exception $e) {
+            return response(['data' => "Data incomplete "],400);
+        }
     }
 
 
