@@ -9,11 +9,18 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Validator;
 
+use App\Exports\UsersExport;
+use Maatwebsite\Excel\Facades\Excel;
+
 class UsersController extends Controller
 {
     public function index()
     {
         return response()->json(User::all(), 200);
+    }
+    public function exportAllUsers(){
+        error_log("ingresando");
+        return Excel::download(new UsersExport, 'users.xlsx');
     }
 
     public function show($id)
@@ -66,4 +73,5 @@ class UsersController extends Controller
             return response()->json(null, 204);
         }
     }
+    
 }

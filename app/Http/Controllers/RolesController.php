@@ -45,8 +45,8 @@ class RolesController extends Controller
             return response()->json(null,204);
         }
     }
-    public function count(){
-        $SQLconsulta = "SELECT countRoles(1) as value";
+    public function count($id){
+        $SQLconsulta = "SELECT countRoles($id) as value";
         $consulta = DB::select($SQLconsulta, array());
         return $consulta;
     }

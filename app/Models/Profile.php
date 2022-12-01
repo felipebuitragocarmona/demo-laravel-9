@@ -11,7 +11,8 @@ class Profile extends Model
     protected $fillable = [
         'phone_number',
         'url_instagram',
-        'user_id'
+        'user_id',
+        'url_avatar'
     ];
     //Indicar que le pertenece a un usuario
     public function user()
