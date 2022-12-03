@@ -34,6 +34,7 @@ Route::controller(UsersController::class)->group(function () {
     Route::get('users','index');
     //->middleware(['user-access'])
     Route::get('users/export', 'exportAllUsers');
+    Route::get('users/export/pdf', 'exportAllUsersPDF');
     Route::get('users/{id}', 'show');
     //->middleware(['user-access','permission-access'] 
     Route::post('users', 'store'); 
