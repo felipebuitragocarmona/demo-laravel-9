@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Hash;
 use Validator;
 
 use App\Exports\UsersExport;
+use App\Exports\UsersExportBlade;
 use Maatwebsite\Excel\Facades\Excel;
 
 class UsersController extends Controller
@@ -18,9 +19,15 @@ class UsersController extends Controller
     {
         return response()->json(User::all(), 200);
     }
+    // public function exportAllUsers(){
+    //     return Excel::download(new UsersExport, 'users.xlsx');
+    // }
+
     public function exportAllUsers(){
-        error_log("ingresando");
-        return Excel::download(new UsersExport, 'users.xlsx');
+        return Excel::download(new UsersExportBlade, 'users.xlsx');
+    }
+    public function exportAllUsersPDF(){
+        return (new UsersExportBlade)->download('users.pdf',\Maatwebsite\Excel\Excel::DOMPDF);
     }
 
     public function show($id)
